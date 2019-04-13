@@ -282,57 +282,57 @@ function createMultiRangeSlider(inputRange) {
  * Initialize range slider
  */
 function initRangeSlider() {
-    // init values
-    var filteredDataLen = dataCubeChart.length, clSum = ngSum = paSum = checkSum = 0;
-    for (var i = 0; i < filteredDataLen; i++) {
-        var filteredDataItem = dataCubeChart[i], filterDataItemType = filteredDataItem.Type;
+	// init values
+	var filteredDataLen = dataCubeChart.length, clSum = ngSum = paSum = checkSum = 0;
+	for (var i = 0; i < filteredDataLen; i++) {
+		var filteredDataItem = dataCubeChart[i], filterDataItemType = filteredDataItem.Type;
 
-        if (filterDataItemType == "B") {
-            clPercent = parseFloat(filteredDataItem['11']) / V32 * 100;
-            ngPercent = (parseFloat(filteredDataItem['21']) - W32) / V32 * 100;
-            paPercent = parseFloat(filteredDataItem['31']) / V32 * 100;
-            
-            var c13 = parseFloat(filteredDataItem['11']),
-            d13 = clPercent * (W33 + W34) / 100,
-            e13 = clPercent * V35 / 100,
-            clSum = c13 + d13 + e13,
-            f13 = ngPercent * V32 / 100,
-            g13 = ngPercent * (V33 + V34) / 100,
-            h13 = ngPercent * V35 / 100,
-            ngSum = f13 + g13 + h13,
-            i13 = paPercent * V32 / 100,
-            j13 = paPercent * (V33 + V34) / 100;
-            k13 = paPercent * V35,
-            paSum = i13 + j13 + k13,
-            checkSum = clSum + ngSum + paSum;
+		if (filterDataItemType == "B") {
+			clPercent = parseFloat(filteredDataItem['11']) / V32 * 100;
+			ngPercent = (parseFloat(filteredDataItem['21']) - W32) / V32 * 100;
+			paPercent = parseFloat(filteredDataItem['31']) / V32 * 100;
+			
+			var c13 = parseFloat(filteredDataItem['11']),
+			d13 = clPercent * (W33 + W34) / 100,
+			e13 = clPercent * V35 / 100,
+			clSum = c13 + d13 + e13,
+			f13 = ngPercent * V32 / 100,
+			g13 = ngPercent * (V33 + V34) / 100,
+			h13 = ngPercent * V35 / 100,
+			ngSum = f13 + g13 + h13,
+			i13 = paPercent * V32 / 100,
+			j13 = paPercent * (V33 + V34) / 100;
+			k13 = paPercent * V35,
+			paSum = i13 + j13 + k13,
+			checkSum = clSum + ngSum + paSum;
 
-            // values for calculating
-            dataParamByIndex['cl'] = clSum / checkSum;
-            dataParamByIndex['ng'] = ngSum / checkSum;
-            dataParamByIndex['pa'] = paSum / checkSum;
+			// values for calculating
+			dataParamByIndex['cl'] = clSum / checkSum;
+			dataParamByIndex['ng'] = ngSum / checkSum;
+			dataParamByIndex['pa'] = paSum / checkSum;
 
-            // values for range slider
-            dataRangeArray[dataRangeLabelCode.indexOf("CL")] = clPercent;
-            dataRangeArray[dataRangeLabelCode.indexOf("NG")] = ngPercent;
-            dataRangeArray[dataRangeLabelCode.indexOf("PA")] = paPercent;
-        } else if (filterDataItemType != "C") {
-            var rVal = parseFloat(filteredDataItem['11']) + parseFloat(filteredDataItem['21']) + parseFloat(filteredDataItem['31']),
-                ciVal = parseFloat(filteredDataItem['12']) + parseFloat(filteredDataItem['22']) + parseFloat(filteredDataItem['32']),
-                tVal = parseFloat(filteredDataItem['13']) + parseFloat(filteredDataItem['23']) + parseFloat(filteredDataItem['33']);
-            dataParamByIndex["r" + filterDataItemType] = rVal;
-            dataParamByIndex["ci" + filterDataItemType] = ciVal;
-            dataParamByIndex["t" + filterDataItemType] = tVal;
+			// values for range slider
+			dataRangeArray[dataRangeLabelCode.indexOf("CL")] = clPercent;
+			dataRangeArray[dataRangeLabelCode.indexOf("NG")] = ngPercent;
+			dataRangeArray[dataRangeLabelCode.indexOf("PA")] = paPercent;
+		} else if (filterDataItemType != "C") {
+			var rVal = parseFloat(filteredDataItem['11']) + parseFloat(filteredDataItem['21']) + parseFloat(filteredDataItem['31']),
+					ciVal = parseFloat(filteredDataItem['12']) + parseFloat(filteredDataItem['22']) + parseFloat(filteredDataItem['32']),
+					tVal = parseFloat(filteredDataItem['13']) + parseFloat(filteredDataItem['23']) + parseFloat(filteredDataItem['33']);
+			dataParamByIndex["r" + filterDataItemType] = rVal;
+			dataParamByIndex["ci" + filterDataItemType] = ciVal;
+			dataParamByIndex["t" + filterDataItemType] = tVal;
 
-            // value for range slider
-            dataRangeArray[dataRangeLabelCode.indexOf(filterDataItemType)] = getParamIndex("r" + filterDataItemType) / V32 * 100;
-        }
-    }
-    console.log(dataCubeChart);
-    console.log(dataParamByIndex);
-    console.log(dataRangeArray);
+			// value for range slider
+			dataRangeArray[dataRangeLabelCode.indexOf(filterDataItemType)] = getParamIndex("r" + filterDataItemType) / V32 * 100;
+		}
+	}
+	console.log(dataCubeChart);
+	console.log(dataParamByIndex);
+	console.log(dataRangeArray);
 
-    // create range slider
-    createMultiRangeSlider(dataRangeArray);
+	// create range slider
+	createMultiRangeSlider(dataRangeArray);
 }
 /**
  * Update range slider event
