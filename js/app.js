@@ -1,4 +1,4 @@
-if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+if (!Detector.webgl) Detector.addGetWebGLMessage();
 
 var container, stats;
 var data;
@@ -41,170 +41,170 @@ var rA1, rA2, rA3, rA4, rA5, rA6, ciA1, ciA2, ciA3, ciA4, ciA5, ciA6, tA1, tA2, 
 var rangeSlider = 0,
     dataCubeChart = [],
     dataRange = [
-        10, // CL
-        20,  // PA
-        30,  // NG
-        50, // A6
-        60,  // A3
-        70,  // A1
-        80,  // A5
-        90,  // A2
-        95  // A4
+			10, // CL
+			20,  // PA
+			30,  // NG
+			50, // A6
+			60,  // A3
+			70,  // A1
+			80,  // A5
+			90,  // A2
+			95  // A4
     ],
     dataRangeArray = [
-        10, // CL
-        20,  // PA
-        30,  // NG
-        50, // A6
-        60,  // A3
-        70,  // A1
-        80,  // A5
-        90,  // A2
-        95  // A4
+			10, // CL
+			20,  // PA
+			30,  // NG
+			50, // A6
+			60,  // A3
+			70,  // A1
+			80,  // A5
+			90,  // A2
+			95  // A4
     ],
     dataRangeLabelCode = [
-        "CL",
-        "PA",
-        "NG",
-        "A6",
-        "A3",
-        "A1",
-        "A5",
-        "A2",
-        "A4"
+			"CL",
+			"PA",
+			"NG",
+			"A6",
+			"A3",
+			"A1",
+			"A5",
+			"A2",
+			"A4"
     ],
     handleInited = [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+			false,
+			false,
+			false,
+			false,
+			false,
+			false,
+			false,
+			false,
+			false
     ],
     dataRangeLabel = [
-        "Coal",
-        "Petroleum",
-        "Natural Gas",
-        "Nuclear",
-        "Geothermal",
-        "Solar",
-        "Biomass",
-        "Wind",
-        "Hydro"
+			"Coal",
+			"Petroleum",
+			"Natural Gas",
+			"Nuclear",
+			"Geothermal",
+			"Solar",
+			"Biomass",
+			"Wind",
+			"Hydro"
     ],
     sliderHandleStyleClass = [
-        "coal",
-        "petroleum",
-        "natural-gas",
-        "nuclear",
-        "geothermal",
-        "solar",
-        "biomass",
-        "wind",
-        "hydro",
-        "hydro"
+			"coal",
+			"petroleum",
+			"natural-gas",
+			"nuclear",
+			"geothermal",
+			"solar",
+			"biomass",
+			"wind",
+			"hydro",
+			"hydro"
     ],
     dataRangeColor = [
-        "#404040",
-        "#808080",
-        "#bfbfbf",
-        "#D9444E",
-        "#F77C48",
-        "#FFDB87",
-        "#9DD7A5",
-        "#3C8FBB",
-        "#4E6EB1",
-        "#4E6EB1"
+			"#404040",
+			"#808080",
+			"#bfbfbf",
+			"#D9444E",
+			"#F77C48",
+			"#FFDB87",
+			"#9DD7A5",
+			"#3C8FBB",
+			"#4E6EB1",
+			"#4E6EB1"
     ],
     dataParamByIndex = {
-        "rA1": 0,
-        "rA2": 0,
-        "rA3": 0,
-        "rA4": 0,
-        "rA5": 0,
-        "rA6": 0,
-        "ciA1": 0,
-        "ciA2": 0,
-        "ciA3": 0,
-        "ciA4": 0,
-        "ciA5": 0,
-        "ciA6": 0,
-        "tA1": 0,
-        "tA2": 0,
-        "tA3": 0,
-        "tA4": 0,
-        "tA5": 0,
-        "tA6": 0,
-        "cl": 0,
-        "ng": 0,
-        "pa": 0,
+			"rA1": 0,
+			"rA2": 0,
+			"rA3": 0,
+			"rA4": 0,
+			"rA5": 0,
+			"rA6": 0,
+			"ciA1": 0,
+			"ciA2": 0,
+			"ciA3": 0,
+			"ciA4": 0,
+			"ciA5": 0,
+			"ciA6": 0,
+			"tA1": 0,
+			"tA2": 0,
+			"tA3": 0,
+			"tA4": 0,
+			"tA5": 0,
+			"tA6": 0,
+			"cl": 0,
+			"ng": 0,
+			"pa": 0,
     };
 //<-- variables and constants for range slider
 
 // data for cube
 $.getJSON('https://dl.dropboxusercontent.com/s/2wlj6asyoai8dk0/cube_test.json', function (info) {
-    var count = Object.keys(info).length;
-    for (var i = 1; i <= count; i++) {
-        dataCubeChart.push(info[i]);
-    }
+	var count = Object.keys(info).length;
+	for (var i = 1; i <= count; i++) {
+		dataCubeChart.push(info[i]);
+	}
 });
 
-$.getJSON('https://dl.dropboxusercontent.com/s/3aqbpvn6kar1a87/data.json', function(info){
-    data = info;
+$.getJSON('https://dl.dropboxusercontent.com/s/3aqbpvn6kar1a87/data.json', function (info) {
+	data = info;
 
-    var count = Object.keys(data).length;
+	var count = Object.keys(data).length;
 
-    for (var i = 1; i<count; i++) {
-        years.push(data[i].Year);
-    }
+	for (var i = 1; i < count; i++) {
+		years.push(data[i].Year);
+	}
 
-    // get unique years
-    years = years.filter( uniqueVal );
-    years.sort(function(a, b){return a - b});
-    console.log(years);
+	// get unique years
+	years = years.filter( uniqueVal );
+	years.sort(function(a, b){return a - b});
+	console.log(years);
 
-    //sort data by years
-    for (var i = 0; i<years.length; i++) {
-        dataByYear[years[i]] = [];
-        for (var j = 1; j<count; j++) {
-            if (data[j].Year !== years[i]) { continue }
-            dataByYear[years[i]].push(data[j]);
-        }
-    }
+	//sort data by years
+	for (var i = 0; i < years.length; i++) {
+		dataByYear[years[i]] = [];
+		for (var j = 1; j < count; j++) {
+			if (data[j].Year !== years[i]) { continue }
+			dataByYear[years[i]].push(data[j]);
+		}
+	}
 
-    //if we need clean array
+	//if we need clean array
 
-    // for (var i = 0; i<dataByYear.length; i++) {
-    //     if (dataByYear[i]) {
-    //         filteredData.push(dataByYear[i]);
-    //     }
-    // }
-    //dataByYear.clean(undefined);
+	// for (var i = 0; i<dataByYear.length; i++) {
+	//     if (dataByYear[i]) {
+	//         filteredData.push(dataByYear[i]);
+	//     }
+	// }
+	//dataByYear.clean(undefined);
 
-    var input = document.getElementById("1");
-    input.setAttribute("min", years[0]);
-    input.setAttribute("max", years[years.length-1]);
-    input.setAttribute("value", years[years.length-1]);
+	var input = document.getElementById("1");
+	input.setAttribute("min", years[0]);
+	input.setAttribute("max", years[years.length-1]);
+	input.setAttribute("value", years[years.length-1]);
 
-    document.getElementById("slider1-value").innerHTML =years[years.length-1];
+	document.getElementById("slider1-value").innerHTML = years[years.length-1];
 
-    console.log(dataByYear);
-    console.log(Math.max(dataByYear[1961][0]));
-    init();
-    animate();
-    changeData(currentYear);
+	console.log(dataByYear);
+	console.log(Math.max(dataByYear[1961][0]));
+	init();
+	animate();
+	changeData(currentYear);
 
-    // init slider connect color
-    $('#range-slider .noUi-connect').each(function (index) {
-        $(this).css('background', dataRangeColor[index]);
-    });
-    // add the hexagon class to slider handle
-    $('#range-slider .noUi-tooltip').each(function (index) {
-        $(this).addClass('hexagon').addClass(sliderHandleStyleClass[index]);
-    });
+	// init slider connect color
+	$('#range-slider .noUi-connect').each(function (index) {
+		$(this).css('background', dataRangeColor[index]);
+	});
+	// add the hexagon class to slider handle
+	$('#range-slider .noUi-tooltip').each(function (index) {
+		$(this).addClass('hexagon').addClass(sliderHandleStyleClass[index]);
+	});
 
 });
 
@@ -213,7 +213,7 @@ $.getJSON('https://dl.dropboxusercontent.com/s/3aqbpvn6kar1a87/data.json', funct
 // RETURN UNIQUE VALUE
 
 function uniqueVal(value, index, self) { 
-    return self.indexOf(value) === index;
+  return self.indexOf(value) === index;
 }
 // CLEAR ARRAY 
 Array.prototype.clean = function(deleteValue) {
@@ -227,20 +227,20 @@ Array.prototype.clean = function(deleteValue) {
 };
 
 var getParamIndex = function (paramName) {
-    return dataParamByIndex[paramName];
+  return dataParamByIndex[paramName];
 };
 
 function getHandleValue(values, handle, isInt) {
-    var result = parseFloat(values[handle]);
-    if(handle > 0) {
-        result = parseFloat(values[handle]) - parseFloat(values[handle - 1]);
-    }
+	var result = parseFloat(values[handle]);
+	if (handle > 0) {
+		result = parseFloat(values[handle]) - parseFloat(values[handle - 1]);
+	}
 
-    if (isInt) {
-        return parseInt(Math.round(result));
-    } else {
-        return result;
-    }
+	if (isInt) {
+		return parseInt(Math.round(result));
+	} else {
+		return result;
+	}
 }
 /**
  * Create multi range slider
