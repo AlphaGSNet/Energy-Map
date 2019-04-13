@@ -453,7 +453,7 @@ function switchFilterItem() {
 }
 
 function init() {
-	container = document.getElementById( 'canvas' );
+	container = document.getElementById('canvas');
 
 	var aspect = window.innerWidth / window.innerHeight;
 	// camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 10000 );
@@ -461,19 +461,19 @@ function init() {
 	camera = new THREE.OrthographicCamera(- d * aspect, d * aspect, d, - d, 1, 1000);
 	// camera = new THREE.OrthographicCamera( frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 2000 );
 							
-	camera.position.set( 60,60,60 );
+	camera.position.set(60, 60, 60);
 
-	cameraTarget = new THREE.Vector3( 0, 0, 0 );
+	cameraTarget = new THREE.Vector3(0, 0, 0);
 
 	scene = new THREE.Scene();
 	///scene.background = new THREE.Color( 0x72645b );
-	scene.fog = new THREE.Fog( 0xffffff, 100, 150 );
+	scene.fog = new THREE.Fog(0xffffff, 100, 150);
 
 	// Ground if needed
 
 	var plane = new THREE.Mesh(
-			new THREE.PlaneBufferGeometry( 40, 40 ),
-			new THREE.MeshPhongMaterial( { color: 0x9FD6E1, specular: 0x101010 } )
+		new THREE.PlaneBufferGeometry(40, 40),
+		new THREE.MeshPhongMaterial({color: 0x9FD6E1, specular: 0x101010})
 	);
 	plane.rotation.x = -Math.PI/2;
 	//scene.add( plane );
@@ -494,14 +494,14 @@ function init() {
 	function createGraph() {
 		for (var i = 0; i < 3; i++) {
 			for (var j = 0; j < 3; j++) {
-				var material1 = new THREE.MeshPhongMaterial( { color: 0x333333, transparent: true, shininess: 200, opacity: 0.8 } );
-				var material2 = new THREE.MeshPhongMaterial( { color: 0x999999, transparent: true, shininess: 200, opacity: 0.8 } );
-				var material3 = new THREE.MeshPhongMaterial( { color: 0x4E6EB1, transparent: true, shininess: 200, opacity: 0.8 } ); //Nuclear
-				var material4 = new THREE.MeshPhongMaterial( { color: 0x3C8FBB, transparent: true, shininess: 200, opacity: 0.8 } ); //Geothermal
-				var material5 = new THREE.MeshPhongMaterial( { color: 0x9DD7A5, transparent: true, shininess: 200, opacity: 0.8 } ); //Solar
-				var material6 = new THREE.MeshPhongMaterial( { color: 0xFFDB87, transparent: true, shininess: 200, opacity: 0.8 } ); //Biofuel				
-				var material7 = new THREE.MeshPhongMaterial( { color: 0xF77C48, transparent: true, shininess: 200, opacity: 0.8 } ); //Wind
-				var material8 = new THREE.MeshPhongMaterial( { color: 0xD9444E, transparent: true, shininess: 200, opacity: 0.8 } ); //Hydro
+				var material1 = new THREE.MeshPhongMaterial({color: 0x333333, transparent: true, shininess: 200, opacity: 0.8});
+				var material2 = new THREE.MeshPhongMaterial({color: 0x999999, transparent: true, shininess: 200, opacity: 0.8});
+				var material3 = new THREE.MeshPhongMaterial({color: 0x4E6EB1, transparent: true, shininess: 200, opacity: 0.8}); //Nuclear
+				var material4 = new THREE.MeshPhongMaterial({color: 0x3C8FBB, transparent: true, shininess: 200, opacity: 0.8}); //Geothermal
+				var material5 = new THREE.MeshPhongMaterial({color: 0x9DD7A5, transparent: true, shininess: 200, opacity: 0.8}); //Solar
+				var material6 = new THREE.MeshPhongMaterial({color: 0xFFDB87, transparent: true, shininess: 200, opacity: 0.8}); //Biofuel				
+				var material7 = new THREE.MeshPhongMaterial({color: 0xF77C48, transparent: true, shininess: 200, opacity: 0.8}); //Wind
+				var material8 = new THREE.MeshPhongMaterial({color: 0xD9444E, transparent: true, shininess: 200, opacity: 0.8}); //Hydro
 
 				heigth1[i] =  1;
 				heigth2[i] =  1;
@@ -515,38 +515,38 @@ function init() {
 				var firstLetter = i + 1;
 				var secondLetter = j + 1;
 
-				var geometry1 = new THREE.BoxBufferGeometry( 10, heigth1[i], 10 );
-				var geometry2 = new THREE.BoxBufferGeometry( 10, heigth2[i], 10 );
-				var geometry3 = new THREE.BoxBufferGeometry( 10, heigth3[i], 10 );
-				var geometry4 = new THREE.BoxBufferGeometry( 10, heigth4[i], 10 );
-				var geometry5 = new THREE.BoxBufferGeometry( 10, heigth5[i], 10 );
-				var geometry6 = new THREE.BoxBufferGeometry( 10, heigth6[i], 10 );
-				var geometry7 = new THREE.BoxBufferGeometry( 10, heigth7[i], 10 );
-				var geometry8 = new THREE.BoxBufferGeometry( 10, heigth8[i], 10 );
+				var geometry1 = new THREE.BoxBufferGeometry(10, heigth1[i], 10);
+				var geometry2 = new THREE.BoxBufferGeometry(10, heigth2[i], 10);
+				var geometry3 = new THREE.BoxBufferGeometry(10, heigth3[i], 10);
+				var geometry4 = new THREE.BoxBufferGeometry(10, heigth4[i], 10);
+				var geometry5 = new THREE.BoxBufferGeometry(10, heigth5[i], 10);
+				var geometry6 = new THREE.BoxBufferGeometry(10, heigth6[i], 10);
+				var geometry7 = new THREE.BoxBufferGeometry(10, heigth7[i], 10);
+				var geometry8 = new THREE.BoxBufferGeometry(10, heigth8[i], 10);
 
-				var cube = new THREE.Mesh( geometry1, material1 );
+				var cube = new THREE.Mesh(geometry1, material1);
 				cube.position.set(spread * i - 11, heigth1[i] / 2, spread * j - 111);
 				cube.name = 'B-' + firstLetter + '' + secondLetter + '';
 				cube.energyType = 'waste';
 				graphSystem.add(cube);
-				graph.push( cube );
+				graph.push(cube);
 
-				var cube2 = new THREE.Mesh( geometry2, material2 );
+				var cube2 = new THREE.Mesh(geometry2, material2);
 				cube2.position.set(spread * i - 11, heigth2[i] / 2 + heigth1[i], spread * j - 111);
 				cube2.name = 'C-' + firstLetter + '' + secondLetter + '';
 				cube2.energyType = 'waste';
-				cube2.material.color = new THREE.Color( 0xCAC9C9 );
+				cube2.material.color = new THREE.Color(0xCAC9C9);
 
 				if (firstLetter == 1) {
-					cube.material.color = new THREE.Color( 0x585B62 );
+					cube.material.color = new THREE.Color(0x585B62);
 				}
 
 				if (firstLetter == 2) {
-					cube.material.color = new THREE.Color( 0xAEAEAE );
+					cube.material.color = new THREE.Color(0xAEAEAE);
 				}
 
 				if (firstLetter == 3) {
-					cube.material.color = new THREE.Color( 0x808080 );
+					cube.material.color = new THREE.Color(0x808080);
 				}
 
 				if (secondLetter == 1) {
@@ -571,49 +571,49 @@ function init() {
 				}
 
 				graphSystem.add(cube2);
-				graph.push( cube2 );
+				graph.push(cube2);
 
-				var cube3 = new THREE.Mesh( geometry3, material3 );
+				var cube3 = new THREE.Mesh(geometry3, material3);
 				cube3.position.set(spread * i - 11, heigth3[i] / 2 + heigth1[i] + heigth2[i], spread * j - 111);
 				cube3.name = 'A6-' + firstLetter + '' + secondLetter + '';
 				cube3.energyType = 'Nuclear';
 				graphSystem.add(cube3);
 				graph.push(cube3);
 
-				var cube4 = new THREE.Mesh( geometry4, material4 );
+				var cube4 = new THREE.Mesh(geometry4, material4);
 				cube4.position.set(spread * i - 11, heigth4[i] / 2 + heigth1[i] + heigth2[i] + heigth3[i], spread * j - 111);
 				cube4.name = 'A3-' + firstLetter + '' + secondLetter + '';
 				cube4.energyType = 'Geothermal';
 				graphSystem.add(cube4);
-				graph.push( cube4 );
+				graph.push(cube4);
 
-				var cube5 = new THREE.Mesh( geometry5, material5 );
+				var cube5 = new THREE.Mesh(geometry5, material5);
 				cube5.position.set(spread * i - 11, heigth5[i] / 2 + heigth1[i] + heigth2[i] + heigth3[i] + heigth4[i], spread * j - 111);
 				cube5.name = 'A1-' + firstLetter + '' + secondLetter + '';
 				cube5.energyType = 'Solar';
 				graphSystem.add(cube5);
-				graph.push( cube5 );
+				graph.push(cube5);
 
-				var cube6 = new THREE.Mesh( geometry6, material6 );
+				var cube6 = new THREE.Mesh(geometry6, material6);
 				cube6.position.set(spread * i - 11, heigth6[i] / 2 + heigth1[i] + heigth2[i] + heigth3[i] + heigth4[i] + heigth5[i], spread * j - 111);
 				cube6.name = 'A5-' + firstLetter + '' + secondLetter + '';
 				cube6.energyType = 'Biofuel';
 				graphSystem.add(cube6);
-				graph.push( cube6 );
+				graph.push(cube6);
 
-				var cube7 = new THREE.Mesh( geometry7, material7 );
+				var cube7 = new THREE.Mesh(geometry7, material7);
 				cube7.position.set(spread * i - 11, heigth7[i] / 2 + heigth1[i] + heigth2[i] + heigth3[i] + heigth4[i] + heigth5[i] + heigth6[i], spread * j - 111);
 				cube7.name = 'A2-' + firstLetter + '' + secondLetter + '';
 				cube7.energyType = 'Wind';
 				graphSystem.add(cube7);
-				graph.push( cube7 );
+				graph.push(cube7);
 
-				var cube8 = new THREE.Mesh( geometry8, material8 );
+				var cube8 = new THREE.Mesh(geometry8, material8);
 				cube8.position.set(spread * i - 11, heigth8[i] / 2 + heigth1[i] + heigth2[i] + heigth3[i] + heigth4[i] + heigth5[i] + heigth6[i] + heigth7[i], spread * j - 111);
 				cube8.name = 'A4-' + firstLetter + '' + secondLetter + '';
 				cube8.energyType = 'Hydro';
 				graphSystem.add(cube8);
-				graph.push( cube8 );
+				graph.push(cube8);
 			}
 		}
 		//scene.add(graph);
@@ -765,72 +765,64 @@ function init() {
 }
 
 // Function that creates light with its given parameters
-function addShadowedLight( x, y, z, color, intensity ) {
+function addShadowedLight(x, y, z, color, intensity) {
+	var directionalLight = new THREE.DirectionalLight(color, intensity);
+	directionalLight.position.set(x, y, z);
+	scene.add(directionalLight);
 
-    var directionalLight = new THREE.DirectionalLight( color, intensity );
-    directionalLight.position.set( x, y, z );
-    scene.add( directionalLight );
+	directionalLight.castShadow = true;
 
-    directionalLight.castShadow = true;
+	var d = 1;
+	directionalLight.shadow.camera.left = -d;
+	directionalLight.shadow.camera.right = d;
+	directionalLight.shadow.camera.top = d;
+	directionalLight.shadow.camera.bottom = -d;
 
-    var d = 1;
-    directionalLight.shadow.camera.left = -d;
-    directionalLight.shadow.camera.right = d;
-    directionalLight.shadow.camera.top = d;
-    directionalLight.shadow.camera.bottom = -d;
+	directionalLight.shadow.camera.near = 1;
+	directionalLight.shadow.camera.far = 4;
 
-    directionalLight.shadow.camera.near = 1;
-    directionalLight.shadow.camera.far = 4;
+	directionalLight.shadow.mapSize.width = 1024;
+	directionalLight.shadow.mapSize.height = 1024;
 
-    directionalLight.shadow.mapSize.width = 1024;
-    directionalLight.shadow.mapSize.height = 1024;
-
-    directionalLight.shadow.bias = -0.005;
-
+	directionalLight.shadow.bias = -0.005;
 }
 
 function onWindowResize() {
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
 
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize( window.innerWidth, window.innerHeight );
-
+	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function animate() {
+	requestAnimationFrame(animate);
+	camera.lookAt (cameraTarget);
 
-    requestAnimationFrame( animate );
-    camera.lookAt (cameraTarget);
+	// graphSystem.rotation.y += 0.1;
 
-    // graphSystem.rotation.y += 0.1;
-
-    render();
-
+	render();
 }
 
 function render() {
+	TWEEN.update();
 
-    TWEEN.update();
-
-    renderer.render( scene, camera );
-
+	renderer.render(scene, camera);
 }
 
 // SLIDERS
 var sliders = document.getElementsByClassName('slider');
 
-for (var i = 0; i< sliders.length; i++) {
-    sliders[i].addEventListener('input', onSliderInput, false);
-    sliders[i].addEventListener('change', onSliderChange, false);
+for (var i = 0; i < sliders.length; i++) {
+	sliders[i].addEventListener('input', onSliderInput, false);
+	sliders[i].addEventListener('change', onSliderChange, false);
 }
 function onSliderInput() {
-    var output = 'slider'+this.id+'-value';
-    document.getElementById(output).innerHTML = this.value;
-    changeData(this.value);
+	var output = 'slider' + this.id + '-value';
+	document.getElementById(output).innerHTML = this.value;
+	changeData(this.value);
 }
 function onSliderChange() {
-    changeData(this.value);
+  changeData(this.value);
 }
 function onDocumentMouseMove(event) {
 
