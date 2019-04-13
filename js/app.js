@@ -246,37 +246,37 @@ function getHandleValue(values, handle, isInt) {
  * Create multi range slider
  */
 function createMultiRangeSlider(inputRange) {
-    var data4Slider = [], maxRange = 0, inputRangeLen = inputRange.length;
-    // Generate data for slider
-    for (var i = 0; i < inputRangeLen; i++) {
-        maxRange += inputRange[i];
-        data4Slider.push(maxRange);
-    }
-    if (rangeSlider != 0) {
-        // slider already created
-        rangeSlider.noUiSlider.updateOptions({
-            start: data4Slider
-        });
-    } else {
-        // create multi range slider
-        rangeSlider = document.getElementById('range-slider');
-        noUiSlider.create(rangeSlider, {
-            start: data4Slider,
-            connect: [true, true, true, true, true, true, true, true, true, true],
-            tooltips: [true, true, true, true, true, true, true, true, true],
-            range: {
-                'min': 0,
-                'max': maxRange
-            }
-        }).on('update', function (values, handle) {
-            var handles = values.length;
-            for(var i = 0; i < handles; i++) {
-                $('.noUi-handle[data-handle="' + i + '"] .noUi-tooltip').text('').html('<p class="noUi-tooltip-text">' + dataRangeLabel[i] + '</p>');
-                $('.noUi-handle[data-handle="' + i + '"]').attr('data-before', getHandleValue(values, i, true));
-            }
-            updateRangeSlider(values, handle);
-        });
-    }
+	var data4Slider = [], maxRange = 0, inputRangeLen = inputRange.length;
+	// Generate data for slider
+	for (var i = 0; i < inputRangeLen; i++) {
+		maxRange += inputRange[i];
+		data4Slider.push(maxRange);
+	}
+	if (rangeSlider != 0) {
+		// slider already created
+		rangeSlider.noUiSlider.updateOptions({
+			start: data4Slider
+		});
+	} else {
+			// create multi range slider
+		rangeSlider = document.getElementById('range-slider');
+		noUiSlider.create(rangeSlider, {
+			start: data4Slider,
+			connect: [true, true, true, true, true, true, true, true, true, true],
+			tooltips: [true, true, true, true, true, true, true, true, true],
+			range: {
+				'min': 0,
+				'max': maxRange
+			}
+		}).on('update', function (values, handle) {
+			var handles = values.length;
+			for (var i = 0; i < handles; i++) {
+				$('.noUi-handle[data-handle="' + i + '"] .noUi-tooltip').text('').html('<p class="noUi-tooltip-text">' + dataRangeLabel[i] + '</p>');
+				$('.noUi-handle[data-handle="' + i + '"]').attr('data-before', getHandleValue(values, i, true));
+			}
+			updateRangeSlider(values, handle);
+		});
+	}
 }
 /**
  * Initialize range slider
