@@ -340,117 +340,116 @@ function initRangeSlider() {
  * @param {*} handle index
  */
 function updateRangeSlider(values, handle) {
-    // check if it is slider initialization
-    if(!handleInited[handle]) {
-        handleInited[handle] = true;
-    }
-    for(var i = 0; i < handleInited.length; i++) {
-        if (!handleInited[i]) {
-            return;
-        }
-    }
-    // update the data
-    var rangeLabel = dataRangeLabelCode[handle],
-    clParam = dataRangeArray[dataRangeLabelCode.indexOf("CL")],
-    ngParam = dataRangeArray[dataRangeLabelCode.indexOf("NG")],
-    paParam = dataRangeArray[dataRangeLabelCode.indexOf("PA")];
-    if(rangeLabel == "CL") {
-        clParam = getHandleValue(values, handle, false);
-    } else if(rangeLabel == "PA") {
-        paParam = getHandleValue(values, handle, false);
-    } else if(rangeLabel == "NG") {
-        ngParam = getHandleValue(values, handle, false);
-    } else {
-        dataParamByIndex['r' + rangeLabel] = getHandleValue(values, handle, false) * V32 / 100;
-        dataParamByIndex['ci' + rangeLabel] = getHandleValue(values, handle, false) * (V33 + V34) / 100;
-        dataParamByIndex['t' + rangeLabel] = getHandleValue(values, handle, false) * V35 / 100;
-    }
+	// check if it is slider initialization
+	if (!handleInited[handle]) {
+		handleInited[handle] = true;
+	}
+	for(var i = 0; i < handleInited.length; i++) {
+		if (!handleInited[i]) {
+			return;
+		}
+	}
+	// update the data
+	var rangeLabel = dataRangeLabelCode[handle],
+	clParam = dataRangeArray[dataRangeLabelCode.indexOf("CL")],
+	ngParam = dataRangeArray[dataRangeLabelCode.indexOf("NG")],
+	paParam = dataRangeArray[dataRangeLabelCode.indexOf("PA")];
+	if (rangeLabel == "CL") {
+		clParam = getHandleValue(values, handle, false);
+	} else if (rangeLabel == "PA") {
+		paParam = getHandleValue(values, handle, false);
+	} else if (rangeLabel == "NG") {
+		ngParam = getHandleValue(values, handle, false);
+	} else {
+		dataParamByIndex['r' + rangeLabel] = getHandleValue(values, handle, false) * V32 / 100;
+		dataParamByIndex['ci' + rangeLabel] = getHandleValue(values, handle, false) * (V33 + V34) / 100;
+		dataParamByIndex['t' + rangeLabel] = getHandleValue(values, handle, false) * V35 / 100;
+	}
 
-    // generate data from slider changes
-    var updatedData = [], updatedDataLen = dataCubeChart.length;
-    for (var i = 0; i < updatedDataLen; i++) {
-        var updatedDataItem = {}, updatedDataItemType = dataCubeChart[i].Type;
+	// generate data from slider changes
+	var updatedData = [], updatedDataLen = dataCubeChart.length;
+	for (var i = 0; i < updatedDataLen; i++) {
+		var updatedDataItem = {}, updatedDataItemType = dataCubeChart[i].Type;
 
-        if (updatedDataItemType == "B") {
-            updatedDataItem['11'] = String(clParam * V32 / 100);
-            updatedDataItem['12'] = String((clParam * (V33 + V34)) / 100);
-            updatedDataItem['13'] = String((clParam * V35) / 100);
-            updatedDataItem['21'] = String(((ngParam * V32) / 100) + W32);
-            updatedDataItem['22'] = String(((W33 + W34) + ((ngParam * (V33 + V34) / 100))));
-            updatedDataItem['23'] = String(((ngParam * V35 / 100) + W35));
-            updatedDataItem['31'] = String(paParam * V32 / 100);
-            updatedDataItem['32'] = String(paParam * (V33 + V34) / 100);
-            updatedDataItem['33'] = String(((paParam * V35 / 100) + (X35 + Y35 + Z35)));
-        } else if (updatedDataItemType != "C") {
-            for (var j = 1; j <= 3; j++) {
-                updatedDataItem[j + '1'] = String(getParamIndex('r' + updatedDataItemType) * getParamIndex('cl'));
-                updatedDataItem[j + '2'] = String(getParamIndex('ci' + updatedDataItemType) * getParamIndex('cl'));
-                updatedDataItem[j + '3'] = String(getParamIndex('t' + updatedDataItemType) * getParamIndex('cl'));
-            }
-        } else {
-            for (var j = 1; j <= 3; j++) {
-                for (var k = 1; k <= 3; k++) {
-                    updatedDataItem[String(j) + String(k)] = dataCubeChart[i][String(j) + String(k)];
-                }
-            }
-        }
+		if (updatedDataItemType == "B") {
+			updatedDataItem['11'] = String(clParam * V32 / 100);
+			updatedDataItem['12'] = String((clParam * (V33 + V34)) / 100);
+			updatedDataItem['13'] = String((clParam * V35) / 100);
+			updatedDataItem['21'] = String(((ngParam * V32) / 100) + W32);
+			updatedDataItem['22'] = String(((W33 + W34) + ((ngParam * (V33 + V34) / 100))));
+			updatedDataItem['23'] = String(((ngParam * V35 / 100) + W35));
+			updatedDataItem['31'] = String(paParam * V32 / 100);
+			updatedDataItem['32'] = String(paParam * (V33 + V34) / 100);
+			updatedDataItem['33'] = String(((paParam * V35 / 100) + (X35 + Y35 + Z35)));
+		} else if (updatedDataItemType != "C") {
+			for (var j = 1; j <= 3; j++) {
+				updatedDataItem[j + '1'] = String(getParamIndex('r' + updatedDataItemType) * getParamIndex('cl'));
+				updatedDataItem[j + '2'] = String(getParamIndex('ci' + updatedDataItemType) * getParamIndex('cl'));
+				updatedDataItem[j + '3'] = String(getParamIndex('t' + updatedDataItemType) * getParamIndex('cl'));
+			}
+		} else {
+			for (var j = 1; j <= 3; j++) {
+				for (var k = 1; k <= 3; k++) {
+					updatedDataItem[String(j) + String(k)] = dataCubeChart[i][String(j) + String(k)];
+				}
+			}
+		}
 
-        updatedDataItem['State'] = dataCubeChart[i].State;
-        updatedDataItem['Type'] = dataCubeChart[i].Type;
-        updatedDataItem['Year'] = dataCubeChart[i].Year;
-        updatedData.push(updatedDataItem);
-    }
+		updatedDataItem['State'] = dataCubeChart[i].State;
+		updatedDataItem['Type'] = dataCubeChart[i].Type;
+		updatedDataItem['Year'] = dataCubeChart[i].Year;
+		updatedData.push(updatedDataItem);
+	}
 
-    // update graph
-    for (var i = 0; i < 8; i++) {
-        layer[i] = [];
-    }
-    // console.log(updatedData);
+	// update graph
+	for (var i = 0; i < 8; i++) {
+		layer[i] = [];
+	}
+	// console.log(updatedData);
 
-    for (var i = 0; i < updatedDataLen; i++) {
-        fillGraph(updatedData[i].Type, updatedData[i], i);
-    }
-    updateGraphVisually();
-
+	for (var i = 0; i < updatedDataLen; i++) {
+		fillGraph(updatedData[i].Type, updatedData[i], i);
+	}
+	updateGraphVisually();
 }
 /**
  * jQuery plugin to add comma to numbers every three digits
  */
 $.fn.digits = function () {
-    return this.each(function () {
-        $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-    })
+	return this.each(function () {
+		$(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+	})
 }
 /**
  * Show the total energy sum of cubes are visible currently
  */
 function showTotalEnergySum() {
-    var sum = 0;
-    for (var i = graph.length - 1; i >= 0; i--) {
-        if (graph[i].visible == true && graph[i].name.indexOf("-") >= 0) {
-            sum += graph[i].value;
-        }
-    }
-    $(".total_energy_sum").text(sum).digits();
+	var sum = 0;
+	for (var i = graph.length - 1; i >= 0; i--) {
+		if (graph[i].visible == true && graph[i].name.indexOf("-") >= 0) {
+			sum += graph[i].value;
+		}
+	}
+	$(".total_energy_sum").text(sum).digits();
 }
 /**
  * Switch filter item
  */
 function switchFilterItem() {
-    var checkBox = document.getElementById("switch-filter-item");
-    $('.filter-item').each(function (index) {
-        if (checkBox.checked == true) {
-            $(this).removeClass('off').addClass('on');
-        } else {
-            $(this).removeClass('on').addClass('off');
-        }
-    });
+	var checkBox = document.getElementById("switch-filter-item");
+	$('.filter-item').each(function (index) {
+		if (checkBox.checked == true) {
+			$(this).removeClass('off').addClass('on');
+		} else {
+			$(this).removeClass('on').addClass('off');
+		}
+	});
 
-    for (var i = graph.length - 1; i >= 0; i--) {
-        graph[i].visible = checkBox.checked;
-    }
+	for (var i = graph.length - 1; i >= 0; i--) {
+		graph[i].visible = checkBox.checked;
+	}
 
-    showTotalEnergySum();
+	showTotalEnergySum();
 }
 
 function init() {
