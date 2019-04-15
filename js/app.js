@@ -825,113 +825,99 @@ function onSliderChange() {
   changeData(this.value);
 }
 function onDocumentMouseMove(event) {
+	if (!INTERSECTED) {
+		var popupX = event.clientX;
+		var popupY = event.clientY - 140;
+	}
 
-    if ( !INTERSECTED ) {
-        var popupX = event.clientX;
-        var popupY = event.clientY-140;
-    }
+	mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+	mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
-    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	
+	var raycaster = new THREE.Raycaster();
+	raycaster.setFromCamera(mouse, camera);
+	var intersects = raycaster.intersectObjects(graph);
 
-    
-    var raycaster = new THREE.Raycaster();
-    raycaster.setFromCamera( mouse, camera );
-    var intersects = raycaster.intersectObjects( graph );
+	if (intersects.length > 0) {
+		if (INTERSECTED != intersects[0].object) {
+			if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
 
-    if ( intersects.length > 0 ) {
+			for (var i = 0; i < graph.length; i++) {
+				graph[i].material.opacity = 0.6;
+			}
 
-        if ( INTERSECTED != intersects[ 0 ].object ) {
+			INTERSECTED = intersects[0].object;
+			INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+			INTERSECTED.material.emissive.setHex(0xff0000);
+			INTERSECTED.material.opacity = 0.8;
 
-            if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+			$('html,body').css('cursor', 'pointer');
+		}
 
-            for (var i = 0; i< graph.length; i++) {
+		var towerName = INTERSECTED.name;
+		towerName = towerName.substring(towerName.indexOf("-") + 1); // get tower index (11...33)
 
-                    graph[i].material.opacity = 0.6;
+		if (INTERSECTED.singleTower) {
+			var totalSum =  parseInt(scene.getObjectByName('B00').value) +
+											parseInt(scene.getObjectByName('B01').value) +
+											parseInt(scene.getObjectByName('B02').value) +
+											parseInt(scene.getObjectByName('C').value) +
+											parseInt(scene.getObjectByName('A1').value) +
+											parseInt(scene.getObjectByName('A2').value) +
+											parseInt(scene.getObjectByName('A3').value) +
+											parseInt(scene.getObjectByName('A4').value) +
+											parseInt(scene.getObjectByName('A5').value) +
+											parseInt(scene.getObjectByName('A6').value);
 
-            }
+			// var sectorType = ' All type of </b> sector(s)';
+			var sectorType = '';
+		} else {
+			var totalSum =  parseInt(scene.getObjectByName('B-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('C-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('A1-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('A2-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('A3-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('A4-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('A5-' + towerName + '').value) +
+											parseInt(scene.getObjectByName('A6-' + towerName + '').value);
 
-            INTERSECTED = intersects[ 0 ].object;
-            INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-            INTERSECTED.material.emissive.setHex( 0xff0000 );
-            INTERSECTED.material.opacity = 0.8;
+			var sectorType = ' in ' + INTERSECTED.sector + '</b> sector(s)';
+		}
 
-            $('html,body').css('cursor', 'pointer');
+		if (INTERSECTED.energyType == 'waste') {
+			var verb = 'wasted';
+			var energyType = '';
+		} else {
+			var verb = 'used';
+			var energyType = INTERSECTED.energyType;
+		}
 
-        }
+		// console.log('tower index: ',towerName, 'tower total value: ',totalSum); // Helps better understand what tower type is hovered and its sum
 
-        var towerName = INTERSECTED.name;
-        towerName = towerName.substring(towerName.indexOf("-") + 1); // get tower index (11...33)
+		// $('#popup').html('<b>'+INTERSECTED.state+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
+		// $('#popup').html('<b>'+stateName+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
+		$('#popup').html('<b>Kansas City</b> ' + verb + ' <b>' + INTERSECTED.value + '</b> mm BTU of <b>' + energyType + '</b> energy<b>' + sectorType + ', out of <b>' + totalSum + '</b> mm BTUs total, in <b>' + INTERSECTED.year + '</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
+		$('#popup').fadeIn(300);
+		$('#popup').css('left', '' + popupX + 'px');
+		$('#popup').css('top', '' + popupY + 'px');
+	} else {
+		if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
 
+		INTERSECTED = null;
+		$('html,body').css('cursor', 'default');
 
-        if (INTERSECTED.singleTower) {
-            var totalSum =  parseInt(scene.getObjectByName( 'B00' ).value) +
-                            parseInt(scene.getObjectByName( 'B01' ).value) +
-                            parseInt(scene.getObjectByName( 'B02' ).value) +
-                            parseInt(scene.getObjectByName( 'C' ).value) +
-                            parseInt(scene.getObjectByName( 'A1' ).value) +
-                            parseInt(scene.getObjectByName( 'A2' ).value) +
-                            parseInt(scene.getObjectByName( 'A3' ).value) +
-                            parseInt(scene.getObjectByName( 'A4' ).value) +
-                            parseInt(scene.getObjectByName( 'A5' ).value) +
-                            parseInt(scene.getObjectByName( 'A6' ).value);
+		for (var i = 0; i < graph.length; i++) {
+			graph[i].material.opacity = 0.8;
+		}
 
-            // var sectorType = ' All type of </b> sector(s)';
-            var sectorType = '';
-        } else {
-            var totalSum =  parseInt(scene.getObjectByName( 'B-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'C-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'A1-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'A2-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'A3-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'A4-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'A5-'+towerName+'' ).value) +
-                            parseInt(scene.getObjectByName( 'A6-'+towerName+'' ).value);
+		if ($('#popup').hasClass('close')) {
+			$('#popup').fadeOut(400);
+		} else {
+			$('#popup').fadeIn(100);
+		}
+	}
 
-            var sectorType = ' in ' + INTERSECTED.sector + '</b> sector(s)';
-        }
-
-        if (INTERSECTED.energyType == 'waste') {
-            var verb = 'wasted';
-            var energyType = '';
-        } else {
-            var verb = 'used';
-            var energyType = INTERSECTED.energyType;
-        }
-
-        // console.log('tower index: ',towerName, 'tower total value: ',totalSum); // Helps better understand what tower type is hovered and its sum
-
-        // $('#popup').html('<b>'+INTERSECTED.state+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
-        // $('#popup').html('<b>'+stateName+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
-        $('#popup').html('<b>Kansas City</b> ' + verb + ' <b>' + INTERSECTED.value + '</b> mm BTU of <b>' + energyType + '</b> energy<b>' + sectorType + ', out of <b>' + totalSum + '</b> mm BTUs total, in <b>' + INTERSECTED.year + '</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
-        $('#popup').fadeIn(300);
-        $('#popup').css('left',''+popupX+'px');
-        $('#popup').css('top',''+popupY+'px');
-
-    } else {
-
-        if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-        INTERSECTED = null;
-        $('html,body').css('cursor', 'default');
-
-        for (var i = 0; i< graph.length; i++) {
-
-                graph[i].material.opacity = 0.8;
-
-        }
-
-        if ($( '#popup' ).hasClass( 'close' )) {
-            $('#popup').fadeOut(400);            
-        } else {
-            $('#popup').fadeIn(100);       
-        }
-       
-
-    }
-
-    //console.log(mouse);
-
+	//console.log(mouse);
 }
 function rotateGraph(angle) {
 
