@@ -951,146 +951,135 @@ function changeData(year) {
 }
 
 function fillGraph(name,dataSet,layerNumber) {
+	layer[layerNumber].name = name; //assigning layer name
 
-    layer[layerNumber].name = name; //assigning layer name
+	var correctionValue = 2; // any dummy positive value otherwise logarithmic scale returns -Infinity
 
-    var correctionValue = 2; // any dummy positive value otherwise logarithmic scale returns -Infinity
+	for (var i = 0; i<8; i++) {
+			heightsGlobal2[i] = [];
+	}
 
-    for (var i = 0; i<8; i++) {
-        heightsGlobal2[i] = [];
-    }
+	if (name == 'B') {
+		var object00 = scene.getObjectByName('B00');
+		var rawValue2 = parseInt(dataSet['11']) + parseInt(dataSet['12']) + parseInt(dataSet['13']);
+		object00.value = Math.round(rawValue2);
+		object00.state = dataSet.State;
+		object00.year = dataSet.Year;
+		var visValue2;
 
-    if (name == 'B') {
-        var object00 = scene.getObjectByName( 'B00' );
-        var rawValue2 = parseInt(dataSet['11'])+parseInt(dataSet['12'])+parseInt(dataSet['13']);
-        object00.value = Math.round(rawValue2);
-        object00.state = dataSet.State;
-        object00.year = dataSet.Year;
-        var visValue2;
+		if (rawValue2 < 1) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
 
-        if ( rawValue2 < 1 ) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
+		object00.visValue = visValue2;
+		object00.scale.y = visValue2;
 
-        object00.visValue = visValue2;
-        object00.scale.y = visValue2;
+		var object01 = scene.getObjectByName('B01');
+		var rawValue2 = parseInt(dataSet['21']) + parseInt(dataSet['22']) + parseInt(dataSet['23']);
+		object01.value = Math.round(rawValue2);
+		object01.state = dataSet.State;
+		object01.year = dataSet.Year;
+		var visValue2;
 
+		if (rawValue2 < 1) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2)}
 
-        var object01 = scene.getObjectByName( 'B01' );
-        var rawValue2 = parseInt(dataSet['21'])+parseInt(dataSet['22'])+parseInt(dataSet['23']);
-        object01.value = Math.round(rawValue2);
-        object01.state = dataSet.State;
-        object01.year = dataSet.Year;
-        var visValue2;
+		object01.visValue = visValue2;
+		object01.scale.y = visValue2;
 
-        if ( rawValue2 < 1 ) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2)}
+		var object02 = scene.getObjectByName('B02');
+		var rawValue2 = parseInt(dataSet['31']) + parseInt(dataSet['32']) + parseInt(dataSet['33']);
+		object02.value = Math.round(rawValue2);
+		object02.state = dataSet.State;
+		object02.year = dataSet.Year;
+		var visValue2;
 
-        object01.visValue = visValue2;
-        object01.scale.y = visValue2;
+		if (rawValue2 < 1) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
 
+		object02.visValue = visValue2;
+		object02.scale.y = visValue2;
+	} else {
+		var object2 = scene.getObjectByName(name);
+		var rawValue2 = parseInt(dataSet['11']) + parseInt(dataSet['12']) + parseInt(dataSet['13']) + parseInt(dataSet['21']) + parseInt(dataSet['22']) + parseInt(dataSet['23']) + parseInt(dataSet['31']) + parseInt(dataSet['32']) + parseInt(dataSet['33']);
+		object2.value = Math.round(rawValue2);
+		object2.state = dataSet.State;
+		object2.year = dataSet.Year;
+		var visValue2;
+		
+		if (rawValue2 < 1) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
 
+		object2.visValue = visValue2;
+		object2.scale.y = visValue2;
+	}
 
-        var object02 = scene.getObjectByName( 'B02' );
-        var rawValue2 = parseInt(dataSet['31'])+parseInt(dataSet['32'])+parseInt(dataSet['33']);
-        object02.value = Math.round(rawValue2);
-        object02.state = dataSet.State;
-        object02.year = dataSet.Year;
-        var visValue2;
-
-        if ( rawValue2 < 1 ) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
-
-        object02.visValue = visValue2;
-        object02.scale.y = visValue2;
-
-    } else {
-
-        var object2 = scene.getObjectByName( name );
-        var rawValue2 = parseInt(dataSet['11'])+parseInt(dataSet['12'])+parseInt(dataSet['13'])+parseInt(dataSet['21'])+parseInt(dataSet['22'])+parseInt(dataSet['23'])+parseInt(dataSet['31'])+parseInt(dataSet['32'])+parseInt(dataSet['33']);
-        object2.value = Math.round(rawValue2);
-        object2.state = dataSet.State;
-        object2.year = dataSet.Year;
-        var visValue2;
-        
-        if ( rawValue2 < 1 ) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
-
-        object2.visValue = visValue2;
-        object2.scale.y = visValue2;
-
-    }
-
-    // heightsGlobal2[layerNumber] = visValue2; // not needed for now
+	// heightsGlobal2[layerNumber] = visValue2; // not needed for now
 
 
-    var visValueMax = 0; // maxium of visValue
+	var visValueMax = 0; // maxium of visValue
 
-    for (var i = 0; i<3; i++) {
-        for (var j = 0; j<3; j++) {
+	for (var i = 0; i < 3; i++) {
+		for (var j = 0; j < 3; j++) {
+			var firstLetter = i + 1;
+			var secondLetter = j + 1;
+			var object = scene.getObjectByName('' + name + '-' + firstLetter + '' + secondLetter + '');
 
+			if (firstLetter == 1) {
+				object.sector = 'Home';
+			}
 
-            var firstLetter = i+1;
-            var secondLetter = j+1;
-            var object = scene.getObjectByName( ''+name+'-'+firstLetter+''+secondLetter+'' );
+			if (firstLetter == 2) {
+				object.sector = 'Business';
+			}
 
-            if (firstLetter == 1) {
-                object.sector = 'Home';
-            }
+			if (firstLetter == 3) {
+				object.sector = 'Transport';
+			}
 
-            if (firstLetter == 2) {
-                object.sector = 'Business';
-            }
+			// if (secondLetter == 1) {
+			//     object.energyType = 'Coal';
+			// }
 
-            if (firstLetter == 3) {
-                object.sector = 'Transport';
-            }
+			// if (secondLetter == 2) {
+			//     object.energyType = 'Petroleum';
+			// }
 
-            // if (secondLetter == 1) {
-            //     object.energyType = 'Coal';
-            // }
+			// if (secondLetter == 3) {
+			//     object.energyType = 'Natural Gas';
+			// }
+		
 
-            // if (secondLetter == 2) {
-            //     object.energyType = 'Petroleum';
-            // }
+			var rawValue = dataSet['' + firstLetter + '' + secondLetter + ''];
+			object.value = Math.round(rawValue);
+			object.state = dataSet.State;
+			object.year = dataSet.Year;
 
-            // if (secondLetter == 3) {
-            //     object.energyType = 'Natural Gas';
-            // }
-          
+			var visValue;
 
-            var rawValue = dataSet[''+firstLetter+''+secondLetter+''];
-            object.value = Math.round(rawValue);
-            object.state = dataSet.State;
-            object.year = dataSet.Year;
+			if (rawValue < 1) { visValue = Math.log(correctionValue) } else { visValue = Math.log(rawValue) }
 
-            var visValue;
+			layer[layerNumber].push(object);
+			object.visValue = visValue;
+			object.scale.y = visValue;
 
-            if ( rawValue < 1 ) { visValue = Math.log(correctionValue) } else { visValue = Math.log(rawValue) }
+			if (visValueMax < visValue) {
+				visValueMax = visValue;
+			}				
+		}
+	}
 
-            layer[layerNumber].push(object);
-            object.visValue = visValue;
-            object.scale.y = visValue;
+	if (visValueMax > VIS_VAL_MAX) {
+		// if visible value is too large, adjust it
+		var divider4Adjust = visValueMax / VIS_VAL_MAX;
+		for (var i = 0; i < 3; i++) {
+			for (var j = 0; j < 3; j++) {
+				var firstLetter = i + 1;
+				var secondLetter = j + 1;
+				var object = scene.getObjectByName('' + name + '-' + firstLetter + '' + secondLetter + '');
+				var newVisValue = object.visValue / divider4Adjust;
+				object.visValue = newVisValue;
+				object.scale.y = newVisValue;
+			}
+		}
+	}
 
-            if (visValueMax < visValue) {
-                visValueMax = visValue;
-            }
-            
-        }
-    }
-
-    if (visValueMax > VIS_VAL_MAX) {
-        // if visible value is too large, adjust it
-        var divider4Adjust = visValueMax / VIS_VAL_MAX;
-        for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 3; j++) {
-                var firstLetter = i + 1;
-                var secondLetter = j + 1;
-                var object = scene.getObjectByName('' + name + '-' + firstLetter + '' + secondLetter + '');
-                var newVisValue = object.visValue / divider4Adjust;
-                object.visValue = newVisValue;
-                object.scale.y = newVisValue;
-            }
-        }
-    }
-
-    showTotalEnergySum();
-    
+	showTotalEnergySum();    
 }
 
 function updateGraphVisually() {
