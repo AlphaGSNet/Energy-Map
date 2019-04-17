@@ -1193,29 +1193,27 @@ function makeFat() {
 }
 
 $('.mdl-radio__button').click(function() {
+	var value = $(this).attr('value');
 
-    var value = $(this).attr('value');
-
-    if (value == '1') {
-        rotateGraph(Math.PI);
-        makeFat();
-        cameraControls.enabled = true;
-        cameraTarget = new THREE.Vector3( 0, 30, 0 );
-    }
-    if (value == '2') {
-        rotateGraph(0);
-        makeFat();
-        cameraControls.enabled = true;
-        cameraTarget = new THREE.Vector3( 0, 10, 0 );
-    }
-    if (value == '3') {
-        rotateGraph(0);
-        cameraControls.reset();
-        cameraControls.enabled = false;
-        makeFlat();
-        cameraTarget = new THREE.Vector3( 0, 20, 0 );
-    }
-
+	if (value == '1') {
+		rotateGraph(Math.PI);
+		makeFat();
+		cameraControls.enabled = true;
+		cameraTarget = new THREE.Vector3(0, 30, 0);
+	}
+	if (value == '2') {
+		rotateGraph(0);
+		makeFat();
+		cameraControls.enabled = true;
+		cameraTarget = new THREE.Vector3(0, 10, 0);
+	}
+	if (value == '3') {
+		rotateGraph(0);
+		cameraControls.reset();
+		cameraControls.enabled = false;
+		makeFlat();
+		cameraTarget = new THREE.Vector3(0, 20, 0);
+	}
 });
 
 $('#popup').hover(function(){
