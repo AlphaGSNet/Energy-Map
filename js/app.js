@@ -1166,31 +1166,33 @@ function updateGraphVisually() {
 
 //     myDoughnutChart.update();
 // }
-function makeFlat(){
-    scene.getObjectByName( 'B00' ).scale.z = 0.01;
-    scene.getObjectByName( 'B01' ).scale.z = 0.01;
-    scene.getObjectByName( 'B02' ).scale.z = 0.01;
-    scene.getObjectByName( 'C' ).scale.z = 0.01;
-    scene.getObjectByName( 'A4' ).scale.z = 0.01;
-    scene.getObjectByName( 'A2' ).scale.z = 0.01;
-    scene.getObjectByName( 'A5' ).scale.z = 0.01;
-    scene.getObjectByName( 'A1' ).scale.z = 0.01;
-    scene.getObjectByName( 'A3' ).scale.z = 0.01;
-    scene.getObjectByName( 'A6' ).scale.z = 0.01;
+function makeFlat() {
+	scene.getObjectByName('B00').scale.z = 0.01;
+	scene.getObjectByName('B01').scale.z = 0.01;
+	scene.getObjectByName('B02').scale.z = 0.01;
+	scene.getObjectByName('C').scale.z = 0.01;
+	scene.getObjectByName('A4').scale.z = 0.01;
+	scene.getObjectByName('A2').scale.z = 0.01;
+	scene.getObjectByName('A5').scale.z = 0.01;
+	scene.getObjectByName('A1').scale.z = 0.01;
+	scene.getObjectByName('A3').scale.z = 0.01;
+	scene.getObjectByName('A6').scale.z = 0.01;
 }
-function makeFat(){
-    scene.getObjectByName( 'B00' ).scale.z = 1;
-    scene.getObjectByName( 'B01' ).scale.z = 1;
-    scene.getObjectByName( 'B02' ).scale.z = 1;
-    scene.getObjectByName( 'C' ).scale.z = 1;
-    scene.getObjectByName( 'A4' ).scale.z = 1;
-    scene.getObjectByName( 'A2' ).scale.z = 1;
-    scene.getObjectByName( 'A5' ).scale.z = 1;
-    scene.getObjectByName( 'A1' ).scale.z = 1;
-    scene.getObjectByName( 'A3' ).scale.z = 1;
-    scene.getObjectByName( 'A6' ).scale.z = 1;
+
+function makeFat() {
+	scene.getObjectByName('B00').scale.z = 1;
+	scene.getObjectByName('B01').scale.z = 1;
+	scene.getObjectByName('B02').scale.z = 1;
+	scene.getObjectByName('C').scale.z = 1;
+	scene.getObjectByName('A4').scale.z = 1;
+	scene.getObjectByName('A2').scale.z = 1;
+	scene.getObjectByName('A5').scale.z = 1;
+	scene.getObjectByName('A1').scale.z = 1;
+	scene.getObjectByName('A3').scale.z = 1;
+	scene.getObjectByName('A6').scale.z = 1;
 }
-$('.mdl-radio__button').click(function(){
+
+$('.mdl-radio__button').click(function() {
 
     var value = $(this).attr('value');
 
