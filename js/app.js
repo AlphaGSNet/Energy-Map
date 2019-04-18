@@ -896,7 +896,7 @@ function onDocumentMouseMove(event) {
 
 		// $('#popup').html('<b>'+INTERSECTED.state+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
 		// $('#popup').html('<b>'+stateName+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
-		$('#popup').html('<b>Kansas City</b> ' + verb + ' <b>' + INTERSECTED.value + '</b> mm BTU of <b>' + energyType + '</b> energy<b>' + sectorType + ', out of <b>' + totalSum + '</b> mm BTUs total, in <b>' + INTERSECTED.year + '</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
+		$('#popup').html('<b>Kansas City</b> ' + verb + ' <b>' + INTERSECTED.value + '</b> mm BTU of <b>' + energyType + '</b> energy<b>' + sectorType + ', out of <b>' + totalSum + '</b> mm BTUs total, in <b>' + INTERSECTED.year + '</b> year'); //show some data in popup window on intersection
 		$('#popup').fadeIn(300);
 		$('#popup').css('left', '' + popupX + 'px');
 		$('#popup').css('top', '' + popupY + 'px');
