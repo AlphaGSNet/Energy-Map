@@ -496,12 +496,12 @@ function init() {
 			for (var j = 0; j < 3; j++) {
 				var material1 = new THREE.MeshPhongMaterial({color: 0x333333, transparent: true, shininess: 200, opacity: 0.8});
 				var material2 = new THREE.MeshPhongMaterial({color: 0x999999, transparent: true, shininess: 200, opacity: 0.8});
-				var material3 = new THREE.MeshPhongMaterial({color: 0x4E6EB1, transparent: true, shininess: 200, opacity: 0.8}); //Nuclear
-				var material4 = new THREE.MeshPhongMaterial({color: 0x3C8FBB, transparent: true, shininess: 200, opacity: 0.8}); //Geothermal
-				var material5 = new THREE.MeshPhongMaterial({color: 0x9DD7A5, transparent: true, shininess: 200, opacity: 0.8}); //Solar
-				var material6 = new THREE.MeshPhongMaterial({color: 0xFFDB87, transparent: true, shininess: 200, opacity: 0.8}); //Biofuel				
-				var material7 = new THREE.MeshPhongMaterial({color: 0xF77C48, transparent: true, shininess: 200, opacity: 0.8}); //Wind
-				var material8 = new THREE.MeshPhongMaterial({color: 0xD9444E, transparent: true, shininess: 200, opacity: 0.8}); //Hydro
+				var material3 = new THREE.MeshPhongMaterial({color: 0xD9444E, transparent: true, shininess: 200, opacity: 0.8}); //Nuclear
+				var material4 = new THREE.MeshPhongMaterial({color: 0xF77C48, transparent: true, shininess: 200, opacity: 0.8}); //Geothermal
+				var material5 = new THREE.MeshPhongMaterial({color: 0xFFDB87, transparent: true, shininess: 200, opacity: 0.8}); //Solar
+				var material6 = new THREE.MeshPhongMaterial({color: 0x9DD7A5, transparent: true, shininess: 200, opacity: 0.8}); //Biofuel				
+				var material7 = new THREE.MeshPhongMaterial({color: 0x3C8FBB, transparent: true, shininess: 200, opacity: 0.8}); //Wind
+				var material8 = new THREE.MeshPhongMaterial({color: 0x4E6EB1, transparent: true, shininess: 200, opacity: 0.8}); //Hydro
 
 				heigth1[i] =  1;
 				heigth2[i] =  1;
@@ -625,12 +625,12 @@ function init() {
 		var material02 = new THREE.MeshPhongMaterial({color: 0x585B62, transparent: true, shininess: 200, opacity: 0.8});
 		var material1 = new THREE.MeshPhongMaterial({color: 0x333333, transparent: true, shininess: 200, opacity: 0.8});
 		var material2 = new THREE.MeshPhongMaterial({color: 0x999999, transparent: true, shininess: 200, opacity: 0.8});		
-		var material3 = new THREE.MeshPhongMaterial({color: 0x4E6EB1, transparent: true, shininess: 200, opacity: 0.8}); //Nuclear
-		var material4 = new THREE.MeshPhongMaterial({color: 0x3C8FBB, transparent: true, shininess: 200, opacity: 0.8}); //Geothermal
-		var material5 = new THREE.MeshPhongMaterial({color: 0x9DD7A5, transparent: true, shininess: 200, opacity: 0.8}); //Solar
-		var material6 = new THREE.MeshPhongMaterial({color: 0xFFDB87, transparent: true, shininess: 200, opacity: 0.8}); //Biofuel				
-		var material7 = new THREE.MeshPhongMaterial({color: 0xF77C48, transparent: true, shininess: 200, opacity: 0.8}); //Wind
-		var material8 = new THREE.MeshPhongMaterial({color: 0xD9444E, transparent: true, shininess: 200, opacity: 0.8}); //Hydro
+		var material3 = new THREE.MeshPhongMaterial({color: 0xD9444E, transparent: true, shininess: 200, opacity: 0.8}); //Nuclear
+		var material4 = new THREE.MeshPhongMaterial({color: 0xF77C48, transparent: true, shininess: 200, opacity: 0.8}); //Geothermal
+		var material5 = new THREE.MeshPhongMaterial({color: 0xFFDB87, transparent: true, shininess: 200, opacity: 0.8}); //Solar
+		var material6 = new THREE.MeshPhongMaterial({color: 0x9DD7A5, transparent: true, shininess: 200, opacity: 0.8}); //Biofuel				
+		var material7 = new THREE.MeshPhongMaterial({color: 0x3C8FBB, transparent: true, shininess: 200, opacity: 0.8}); //Wind
+		var material8 = new THREE.MeshPhongMaterial({color: 0x4E6EB1, transparent: true, shininess: 200, opacity: 0.8}); //Hydro
 
 		var geometry = new THREE.BoxBufferGeometry(20, 1, 20);
 
@@ -1094,12 +1094,12 @@ function updateGraphVisually() {
 		if (layer[i].name == 'B') { sortedLayers[0] = layer[i] }
 		if (layer[i].name == 'C') { sortedLayers[1] = layer[i] }
 
-		if (layer[i].name == 'A4') { sortedLayers[2] = layer[i] }
-		if (layer[i].name == 'A2') { sortedLayers[3] = layer[i] }
-		if (layer[i].name == 'A5') { sortedLayers[4] = layer[i] }
-		if (layer[i].name == 'A1') { sortedLayers[5] = layer[i] }
-		if (layer[i].name == 'A3') { sortedLayers[6] = layer[i] }
-		if (layer[i].name == 'A6') { sortedLayers[7] = layer[i] }
+		if (layer[i].name == 'A6') { sortedLayers[2] = layer[i] }
+		if (layer[i].name == 'A3') { sortedLayers[3] = layer[i] }
+		if (layer[i].name == 'A1') { sortedLayers[4] = layer[i] }
+		if (layer[i].name == 'A5') { sortedLayers[5] = layer[i] }
+		if (layer[i].name == 'A2') { sortedLayers[6] = layer[i] }
+		if (layer[i].name == 'A4') { sortedLayers[7] = layer[i] }
 	}
 
 	for (var k = 0; k < sortedLayers.length; k++) {
