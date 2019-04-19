@@ -1216,39 +1216,37 @@ $('.mdl-radio__button').click(function() {
 	}
 });
 
-$('#popup').hover(function(){
-    $('#popup').removeClass('close');
+$('#popup').hover(function() {
+  $('#popup').removeClass('close');
 });
-$( '#popup' ).mouseleave(function() {
-    $('#popup').addClass('close');
+$('#popup').mouseleave(function() {
+  $('#popup').addClass('close');
 });
 
-$('.filter-item').click(function(){
+$('.filter-item').click(function() {
+	var clickedId = $(this).attr('id');
 
-    var clickedId = $(this).attr('id');
+	if ($(this).hasClass('on')) {
+		$(this).removeClass('on');
+		$(this).addClass('off');
 
-    if ( $(this).hasClass('on') ) {
-        $(this).removeClass('on');
-        $(this).addClass('off');
+		for (var i = graph.length - 1; i >= 0; i--) {
+			if (graph[i].energyType == clickedId) {
+				graph[i].visible = false;
+			}
+		}
+	} else {
+		$(this).removeClass('off');
+		$(this).addClass('on');
 
-        for (var i = graph.length - 1; i >= 0; i--) {
-            if( graph[i].energyType == clickedId ) {
-                graph[i].visible = false;
-            }
-        }
-    } else {
-        $(this).removeClass('off');
-        $(this).addClass('on');
+		for (var i = graph.length - 1; i >= 0; i--) {
+			if (graph[i].energyType == clickedId && ((graph[i].name.indexOf("-") >= 0 && $('#filter-item2-' + graph[i].name.slice(-1)).hasClass('on')))) {
+				graph[i].visible = true;
+			}
+		}
+	}
 
-        for (var i = graph.length - 1; i >= 0; i--) {
-            if (graph[i].energyType == clickedId && ((graph[i].name.indexOf("-") >= 0 && $('#filter-item2-' + graph[i].name.slice(-1)).hasClass('on'))) ) {
-                graph[i].visible = true;
-            }
-        }
-    }
-
-    showTotalEnergySum();
-
+	showTotalEnergySum();
 });
 
 $('.filter-item2').click(function(){
