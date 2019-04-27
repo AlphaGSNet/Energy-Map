@@ -750,8 +750,6 @@ function init() {
 	//stats = new Stats();
 	//container.appendChild( stats.dom );
 
-	//
-
 	window.addEventListener('resize', onWindowResize, false);
 	window.addEventListener('mousemove', onDocumentMouseMove, false);
 }
