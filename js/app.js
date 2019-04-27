@@ -786,7 +786,7 @@ function onWindowResize() {
 
 function animate() {
 	requestAnimationFrame(animate);
-	camera.lookAt (cameraTarget);
+	camera.lookAt(cameraTarget);
 
 	// graphSystem.rotation.y += 0.1;
 
@@ -806,14 +806,17 @@ for (var i = 0; i < sliders.length; i++) {
 	sliders[i].addEventListener('input', onSliderInput, false);
 	sliders[i].addEventListener('change', onSliderChange, false);
 }
+
 function onSliderInput() {
 	var output = 'slider' + this.id + '-value';
 	document.getElementById(output).innerHTML = this.value;
 	changeData(this.value);
 }
+
 function onSliderChange() {
   changeData(this.value);
 }
+
 function onDocumentMouseMove(event) {
 	if (!INTERSECTED) {
 		var popupX = event.clientX;
@@ -882,8 +885,6 @@ function onDocumentMouseMove(event) {
 			var energyType = INTERSECTED.energyType;
 		}
 
-		// console.log('tower index: ',towerName, 'tower total value: ',totalSum); // Helps better understand what tower type is hovered and its sum
-
 		// $('#popup').html('<b>'+INTERSECTED.state+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
 		// $('#popup').html('<b>'+stateName+'</b> '+verb+' <b>'+INTERSECTED.value+'</b> Quads of <b>'+energyType+'</b> energy<b>'+sectorType+', out of <b>'+totalSum+'</b> Quads total, in <b>'+INTERSECTED.year+'</b> year<br>Some additional text here<br>Link: <a href="">You cant click this link :D</a>'); //show some data in popup window on intersection
 		$('#popup').html('<b>Kansas City</b> ' + verb + ' <b>' + INTERSECTED.value + '</b> mm BTU of <b>' + energyType + '</b> energy<b>' + sectorType + ', out of <b>' + totalSum + '</b> mm BTUs total, in <b>' + INTERSECTED.year + '</b> year'); //show some data in popup window on intersection
@@ -906,12 +907,12 @@ function onDocumentMouseMove(event) {
 			$('#popup').fadeIn(100);
 		}
 	}
-
-	//console.log(mouse);
 }
+
 function rotateGraph(angle) {
   graphSystem.rotation.y = angle;
 }
+
 function changeData(year) {
 	currentYear = year;
 
@@ -927,8 +928,6 @@ function changeData(year) {
 		layer[i] = [];
 	}
 
-	console.log(filteredData);
-
 	for (var i = 0; i < filteredData.length; i++) {
 		fillGraph(filteredData[i].Type, filteredData[i], i);
 	}
@@ -940,7 +939,7 @@ function changeData(year) {
 	initRangeSlider();
 }
 
-function fillGraph(name,dataSet,layerNumber) {
+function fillGraph(name, dataSet, layerNumber) {
 	layer[layerNumber].name = name; //assigning layer name
 
 	var correctionValue = 2; // any dummy positive value otherwise logarithmic scale returns -Infinity
