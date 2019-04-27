@@ -186,13 +186,11 @@ $.getJSON('https://dl.dropboxusercontent.com/s/3aqbpvn6kar1a87/data.json', funct
 
 	var input = document.getElementById("1");
 	input.setAttribute("min", years[0]);
-	input.setAttribute("max", years[years.length-1]);
-	input.setAttribute("value", years[years.length-1]);
+	input.setAttribute("max", years[years.length - 1]);
+	input.setAttribute("value", years[years.length - 1]);
 
-	document.getElementById("slider1-value").innerHTML = years[years.length-1];
+	document.getElementById("slider1-value").innerHTML = years[years.length - 1];
 
-	console.log(dataByYear);
-	console.log(Math.max(dataByYear[1961][0]));
 	init();
 	animate();
 	changeData(currentYear);
@@ -205,10 +203,7 @@ $.getJSON('https://dl.dropboxusercontent.com/s/3aqbpvn6kar1a87/data.json', funct
 	$('#range-slider .noUi-tooltip').each(function (index) {
 		$(this).addClass('hexagon').addClass(sliderHandleStyleClass[index]);
 	});
-
 });
-
-
 
 // RETURN UNIQUE VALUE
 
@@ -327,9 +322,6 @@ function initRangeSlider() {
 			dataRangeArray[dataRangeLabelCode.indexOf(filterDataItemType)] = getParamIndex("r" + filterDataItemType) / V32 * 100;
 		}
 	}
-	console.log(dataCubeChart);
-	console.log(dataParamByIndex);
-	console.log(dataRangeArray);
 
 	// create range slider
 	createMultiRangeSlider(dataRangeArray);
