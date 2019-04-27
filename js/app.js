@@ -944,8 +944,8 @@ function fillGraph(name, dataSet, layerNumber) {
 
 	var correctionValue = 2; // any dummy positive value otherwise logarithmic scale returns -Infinity
 
-	for (var i = 0; i<8; i++) {
-			heightsGlobal2[i] = [];
+	for (var i = 0; i < 8; i++) {
+		heightsGlobal2[i] = [];
 	}
 
 	if (name == 'B') {
@@ -1031,8 +1031,7 @@ function fillGraph(name, dataSet, layerNumber) {
 
 			// if (secondLetter == 3) {
 			//     object.energyType = 'Natural Gas';
-			// }
-		
+			// }		
 
 			var rawValue = dataSet['' + firstLetter + '' + secondLetter + ''];
 			object.value = Math.round(rawValue);
