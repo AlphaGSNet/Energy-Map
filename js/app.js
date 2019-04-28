@@ -1273,16 +1273,6 @@ $('.filter-item3').click(function () {
 	}
 });
 
-
-
-
-
-
-
-
-
-
-
 // simplemaps_usmap.hooks.click_state=function(id){
 //     stateId = id;
 //     stateName = simplemaps_usmap_mapdata.state_specific[id].name;
