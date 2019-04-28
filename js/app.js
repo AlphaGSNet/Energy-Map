@@ -1048,7 +1048,7 @@ function fillGraph(name, dataSet, layerNumber) {
 
 			if (visValueMax < visValue) {
 				visValueMax = visValue;
-			}				
+			}
 		}
 	}
 
