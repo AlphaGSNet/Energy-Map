@@ -1067,7 +1067,7 @@ function fillGraph(name, dataSet, layerNumber) {
 		}
 	}
 
-	showTotalEnergySum();    
+	showTotalEnergySum();
 }
 
 function updateGraphVisually() {
