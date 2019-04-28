@@ -345,7 +345,9 @@ span.value {
   width: 60px;
   height: 34px;
 }
-.switch input {display:none;}
+.switch input {
+  display:none;
+}
 .slider-switch {
   position: absolute;
   cursor: pointer;
