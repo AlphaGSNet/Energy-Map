@@ -992,14 +992,17 @@ function fillGraph(name, dataSet, layerNumber) {
 		object2.year = dataSet.Year;
 		var visValue2;
 		
-		if (rawValue2 < 1) { visValue2 = Math.log(correctionValue) } else { visValue2 = Math.log(rawValue2) }
+		if (rawValue2 < 1) {
+			visValue2 = Math.log(correctionValue)
+		} else {
+			visValue2 = Math.log(rawValue2)
+		}
 
 		object2.visValue = visValue2;
 		object2.scale.y = visValue2;
 	}
 
 	// heightsGlobal2[layerNumber] = visValue2; // not needed for now
-
 
 	var visValueMax = 0; // maxium of visValue
 
@@ -1040,7 +1043,11 @@ function fillGraph(name, dataSet, layerNumber) {
 
 			var visValue;
 
-			if (rawValue < 1) { visValue = Math.log(correctionValue) } else { visValue = Math.log(rawValue) }
+			if (rawValue < 1) {
+				visValue = Math.log(correctionValue)
+			} else {
+				visValue = Math.log(rawValue)
+			}
 
 			layer[layerNumber].push(object);
 			object.visValue = visValue;
