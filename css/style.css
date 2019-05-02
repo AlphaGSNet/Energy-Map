@@ -1,28 +1,28 @@
 html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 0.02em;
 	overflow: hidden;
-	height: 100%;
-	margin: 0;
-	padding: 0;
 }
 .popup {
   display: none;
   position: absolute;
-  max-width: 220px;
-  padding: 15px;
-  color: #333;
   margin: 0 0 30px 20px;
+  padding: 15px;
+  max-width: 220px;
   background: rgba(255,255,255,0.8);
   border-radius: 3px;
   box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  color: #333;
 }
 .chart_container {
-  width: 550px;
-  height: 330px;
   position: absolute;
   top: 20vh;
   right: 60px;
+  width: 550px;
+  height: 330px;
 }
 .filter_container {
   position: absolute;
@@ -33,9 +33,9 @@ html, body {
 }
 .data_type {
   position: absolute;
-  width: 400px;
   top: 20%;
   right: 60px;
+  width: 400px;
 }
 .data_mode {
   position: absolute;
@@ -52,13 +52,13 @@ html, body {
   display: inline;
 }
 .filter-item {
-  width: 64px;
-  cursor: pointer;
   display: inline-block;
   -moz-transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+  width: 64px;
+  cursor: pointer;
 }
 .filter-item img {
   width: 100%;
@@ -74,13 +74,13 @@ html, body {
 }
 .filter-item2,
 .filter-item3 {
-  width: 64px;
-  cursor: pointer;
   display: inline-block;
   -moz-transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+  width: 64px;
+  cursor: pointer;
 }
 .filter-item2 img,
 .filter-item3 img {
@@ -99,23 +99,22 @@ html, body {
   opacity: 0.4;
 }
 .logo {
-  font-size: 32px;
-  color: #fff;
-  font-weight: 300;
   position: absolute;
   top: 60px;
   left: 100px;
+  font-size: 32px;
+  font-weight: 300;
+  color: #fff;
 }
 .cont {
   padding: 20px;
   border-radius: 10px;
-/*  background: rgba(0,0,0,0.2);*/
 }
 .img_logo {
-  width: 30px;
   position: absolute;
-  left: 60px;
   top: 45px;
+  left: 60px;
+  width: 30px;
 }
 .img_logo img {
   width: 100%;
