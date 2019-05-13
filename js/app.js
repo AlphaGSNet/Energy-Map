@@ -1147,20 +1147,16 @@ function updateGraphVisually() {
 	object8.position.y = object8.visValue / 2 + object00.visValue + object01.visValue + object02.visValue + object2.visValue + object3.visValue + object4.visValue + object5.visValue + object6.visValue + object7.visValue;
 }
 
-// function updateChart() {
+function updateChart() {
+	// dataD.datasets[0].data[0] = Math.random() * 20;
+	// dataD.datasets[0].data[1] = Math.random() * 20;
+	// dataD.datasets[0].data[2] = Math.random() * 20;
+	// dataD.datasets[0].data[3] = Math.random() * 20;
+	// dataD.datasets[0].data[4] = Math.random() * 10;
+	// dataD.datasets[0].data[5] = Math.random() * 10;
 
-//     dataD.datasets[0].data[0] = Math.random()*20;
-
-//     dataD.datasets[0].data[1] = Math.random()*20;
-
-//     dataD.datasets[0].data[2] = Math.random()*20;
-//     dataD.datasets[0].data[3] = Math.random()*20;
-//     dataD.datasets[0].data[4] = Math.random()*10;
-//     dataD.datasets[0].data[5] = Math.random()*10;
-
-
-//     myDoughnutChart.update();
-// }
+  // myDoughnutChart.update();
+}
 function makeFlat() {
 	scene.getObjectByName('B00').scale.z = 0.01;
 	scene.getObjectByName('B01').scale.z = 0.01;
