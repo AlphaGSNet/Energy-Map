@@ -1282,3 +1282,57 @@ $('.filter-item3').click(function () {
 //     changeData(currentYear);
 //     console.log('Changed state: ',id,'Current year: ',currentYear);
 // }
+
+$('#B-layer-text').hover(function () {
+	for (var i = graph.length - 1; i >= 0; i--) {
+		if (!['Coal'].includes(graph[i].energyType)) {
+			graph[i].visible = false;
+		}
+	}
+
+	showTotalEnergySum();
+});
+
+$('#B-layer-text').mouseleave(function () {
+	for (var i = graph.length - 1; i >= 0; i--) {
+		graph[i].visible = true;
+	}
+
+	showTotalEnergySum();
+});
+
+$('#C-layer-text').hover(function () {
+	for (var i = graph.length - 1; i >= 0; i--) {
+		if (!['waste'].includes(graph[i].energyType)) {
+			graph[i].visible = false;
+		}
+	}
+
+	showTotalEnergySum();
+});
+
+$('#C-layer-text').mouseleave(function () {
+	for (var i = graph.length - 1; i >= 0; i--) {
+		graph[i].visible = true;
+	}
+
+	showTotalEnergySum();
+});
+
+$('#others-layer-text').hover(function () {
+	for (var i = graph.length - 1; i >= 0; i--) {
+		if (!['Nuclear', 'Geothermal', 'Solar', 'Biofuel', 'Wind', 'Hydro', 'Petroleum'].includes(graph[i].energyType)) {
+			graph[i].visible = false;
+		}
+	}
+
+	showTotalEnergySum();
+});
+
+$('#others-layer-text').mouseleave(function () {
+	for (var i = graph.length - 1; i >= 0; i--) {
+		graph[i].visible = true;
+	}
+
+	showTotalEnergySum();
+});
