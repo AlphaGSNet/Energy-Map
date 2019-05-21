@@ -933,9 +933,7 @@ function changeData(year) {
 	}
 
 	updateGraphVisually();
-
 	// updateChart();
-
 	initRangeSlider();
 }
 
