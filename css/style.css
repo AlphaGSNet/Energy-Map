@@ -436,21 +436,31 @@ input:checked + .slider-switch:before {
   padding: 10px;
 }
 
-.cc-selector input{
-  margin:0;padding:0;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
+.cc-selector input {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-.cc-selector-2 input{
-  position:absolute;
-  z-index:999;
+.cc-selector-2 input {
+  position: absolute;
+  z-index: 999;
 }
-.d3Simplified-mode{background-image:url('../img/3dSimplified.png'); }
-.full2d-mode{background-image:url('../img/full2d.png'); }
-.full3d-mode{background-image:url('../img/full3d.png'); }
+.d3Simplified-mode {
+  background-image: url('../img/3dSimplified.png');
+}
+.full2d-mode {
+  background-image: url('../img/full2d.png');
+}
+.full3d-mode {
+  background-image: url('../img/full3d.png');
+}
 
-.cc-selector-2 input:active +.drinkcard-cc, .cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector-2 input:active + .drinkcard-cc,
+.cc-selector input:active + .drinkcard-cc {
+  opacity: .9;
+}
 .cc-selector-2 input:checked +.drinkcard-cc, .cc-selector input:checked +.drinkcard-cc{
   -webkit-filter: none;
   -moz-filter: none;
