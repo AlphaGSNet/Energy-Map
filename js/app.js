@@ -25,7 +25,6 @@ var graph = [];
 var graphSystem;
 
 var years = [];
-
 var dataByYear = [];
 var filteredData = [];
 
@@ -162,9 +161,8 @@ $.getJSON('https://dl.dropboxusercontent.com/s/3aqbpvn6kar1a87/data.json', funct
 	}
 
 	// get unique years
-	years = years.filter( uniqueVal );
-	years.sort(function(a, b){return a - b});
-	console.log(years);
+	years = years.filter(uniqueVal);
+	years.sort(function (a, b) {return a - b});
 
 	//sort data by years
 	for (var i = 0; i < years.length; i++) {
