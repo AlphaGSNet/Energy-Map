@@ -461,17 +461,19 @@ input:checked + .slider-switch:before {
 .cc-selector input:active + .drinkcard-cc {
   opacity: .9;
 }
-.cc-selector-2 input:checked +.drinkcard-cc, .cc-selector input:checked +.drinkcard-cc{
+.cc-selector-2 input:checked + .drinkcard-cc,
+.cc-selector input:checked + .drinkcard-cc {
   -webkit-filter: none;
   -moz-filter: none;
   filter: none;
 }
-.drinkcard-cc{
-  cursor:pointer;
-  background-size:contain;
-  background-repeat:no-repeat;
-  display:inline-block;
-  width:40px;height:40px;
+.drinkcard-cc {
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
@@ -482,7 +484,7 @@ input:checked + .slider-switch:before {
   margin: -5px -28px;
   height: 76px;
 }
-.mode-view-listing input:hover{
+.mode-view-listing input:hover {
   cursor: pointer;
 }
 .mode-view-listing li {
@@ -491,7 +493,7 @@ input:checked + .slider-switch:before {
   text-align: center;
   color: #000;
 }
-.mode-view-listing{
+.mode-view-listing {
   width: 452px;
 }
 .mode-view-listing li .cc-selector-2 {
@@ -507,15 +509,18 @@ input:checked + .slider-switch:before {
 .mode-view-listing li {
   opacity: .3;
 }
-.mode-view-listing li:hover ,
-.mode-view-listing li.selected-mode{
+.mode-view-listing li:hover,
+.mode-view-listing li.selected-mode {
   opacity: 1;
   cursor: pointer;
 }
 .mdl-slider__background-lower {
   background: #696969 !important;
 }
-.drawMap { width: 100%; height: 500px;}
+.drawMap {
+  width: 100%;
+  height: 500px;
+}
 
 .mdl-slider.is-upgraded::-moz-range-thumb {
   background: #696969 !important;
