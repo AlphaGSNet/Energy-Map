@@ -554,9 +554,9 @@ input:checked + .slider-switch:before {
   margin: 0 1px 0 0 !important;
   border-radius: 0 !important;
 }
-.map-toggle.active{
+.map-toggle.active {
   background: #26A077 !important;
-  color:#fff !important;
+  color: #fff !important;
 }
 .waiting-loader {
   position: fixed;
